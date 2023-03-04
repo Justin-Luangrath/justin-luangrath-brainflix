@@ -1,0 +1,59 @@
+@use "../../styles/_partials/colors" as *;
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/mixins" as *;
+@use "../../styles/_partials/variables" as *;
+
+.comment {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem 0;
+  border-collapse: collapse;
+  border-bottom: 1px solid $secondary-color-mercury;
+  border-top: 1px solid $secondary-color-mercury;
+  @include desktop {
+    padding: 2rem 0;
+    border-bottom: none;
+  }
+  &__img {
+    height: 2.25rem;
+    width: 2.25rem;
+    background-color: $secondary-color-mercury;
+    border-radius: 50%;
+    border-style: none;
+    z-index: 2;
+    @include tablet {
+      width: 3rem;
+      height: 3rem;
+    }
+    &-container {
+      width: 2.25rem;
+      @include tablet {
+        width: 3rem;
+      }
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+  &__header {
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.25rem;
+    }
+    &-text--time {
+      color: $secondary-color-mercury;
+    }
+  }
+  &-feed {
+    margin-bottom: 1rem;
+    @include tablet {
+      margin-bottom: 2rem;
+    }
+    @include desktop {
+      width: 35rem;
+    }
+  }
+}

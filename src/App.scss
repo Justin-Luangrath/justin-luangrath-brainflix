@@ -1,7 +1,7 @@
-@use "./styles/partials/colors" as *;
-@use "./styles/partials/fonts" as *;
-@use "./styles/partials/mixins" as *;
-@use "./styles/partials/variables" as *;
+@use "./styles/_partials/colors" as *;
+@use "./styles/_partials/fonts" as *;
+@use "./styles/_partials/mixins" as *;
+@use "./styles/_partials/variables" as *;
 
 *,
 *::before,
@@ -16,4 +16,37 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.lower {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  @include desktop {
+    flex-direction: row;
+    justify-content: center;
+    width: 85%;
+  }
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+  &__video-data {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @include desktop {
+      width: 65%;
+      border-right: 1px solid $secondary-color-mercury;
+    }
+  }
+  &__video-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @include desktop {
+      width: 35%;
+      height: 100%;
+    }
+  }
 }
