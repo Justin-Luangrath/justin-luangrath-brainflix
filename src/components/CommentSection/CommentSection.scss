@@ -1,0 +1,15 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.comment-section {
+  padding: 1rem;
+  border-collapse: collapse;
+  @include tablet {
+    padding: 1rem 2rem;
+  }
+  @include desktop {
+    padding: 0;
+  }
+}
