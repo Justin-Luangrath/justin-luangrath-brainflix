@@ -1,0 +1,23 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.video-list {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  @include tablet {
+    padding: 1rem 2rem;
+  }
+  &__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: $primary-color-silver;
+    margin-bottom: 1rem;
+    @include tablet {
+      margin-bottom: 2rem;
+    }
+  }
+}
