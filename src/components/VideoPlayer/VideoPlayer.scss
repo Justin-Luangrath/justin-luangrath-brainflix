@@ -1,0 +1,24 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.player {
+  width: 100%;
+  height: 100%;
+  @include tablet {
+    height: $tablet-player-height;
+    width: calc($tablet-player-height * 1.77);
+  }
+  @include desktop {
+    height: $desktop-player-height;
+    width: calc($desktop-player-height * 1.77);
+  }
+  &__container {
+    display: flex;
+    justify-content: center;
+    background-color: $secondary-color-dark-black;
+    width: 100%;
+  }
+}
