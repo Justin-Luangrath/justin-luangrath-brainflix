@@ -1,0 +1,47 @@
+@use "../../styles/_partials/global" as *;
+@use "../../styles/_partials/colors" as *;
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/mixins" as *;
+@use "../../styles/_partials/variables" as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  height: calc(100vh - 178px);
+  text-align: center;
+  &__content {
+    max-width: 900px;
+  }
+  &__title {
+    color: $primary-color-blue;
+    font-size: 1000%;
+  }
+  &__sub-title {
+    color: $primary-color-black;
+    margin-bottom: 1rem;
+  }
+  &__text {
+    color: $primary-color-black;
+    padding: 0 4rem;
+  }
+  &__button {
+    width: 10rem;
+    height: 40px;
+    border-radius: 4px;
+    color: $primary-color-white;
+    background-color: $primary-color-blue;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    &:hover {
+      background-color: $secondary-color-dark-blue;
+    }
+    &--link {
+      width: 100%;
+    }
+  }
+}
