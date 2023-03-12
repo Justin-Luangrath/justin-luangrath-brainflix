@@ -1,45 +1,51 @@
 import "./App.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
-import VideoDescription from "./components/VideoDescription/VideoDescription";
-import CommentSection from "./components/CommentSection/CommentSection";
-import VideoList from "./components/VideoList/VideoList";
-import videoDetailsData from "./data/video-details.json";
+import MainVideo from "./pages/MainVideo/MainVideo";
+import UploadVideo from "./pages/UploadVideo/UploadVideo";
+import UploadSuccess from "./pages/UploadSuccess/UploadSuccess";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 function App() {
-  const [videoDetails, setvideoDetails] = useState(videoDetailsData);
-  const [currentVideoId, setCurrentVideo] = useState(videoDetailsData[0].id);
-  const videoSelector = (event, id) => {
-    event.preventDefault();
-    let currentVideo = videoDetailsData.find((video) => video.id === id);
-    setCurrentVideo(currentVideo.id);
-  };
+  const api_key = "6e3d80c0-6268-484d-822e-eb7e919f271b";
+  const [videos, setVideos] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get(`https://project-2-api.herokuapp.com/videos?api_key=${api_key}`)
+      .then((response) => {
+        setVideos(response.data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (isLoading) {
+    return <div></div>;
+  }
+
   return (
-    <>
-      <Header />
-      <VideoPlayer videoList={videoDetails} currentVideoId={currentVideoId} />
-      <div className="lower__container">
-        <div className="lower">
-          <div className="lower__video-data">
-            <VideoDescription
-              videoDetails={videoDetails}
-              currentVideoId={currentVideoId}
-            />
-            <CommentSection
-              videoDetails={videoDetails}
-              currentVideoId={currentVideoId}
-            />
-          </div>
-          <div className="lower__video-list">
-            <VideoList
-              currentVideoId={currentVideoId}
-              videoSelector={videoSelector}
-            />
-          </div>
-        </div>
-      </div>
-    </>
+    <div className="App">
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={<MainVideo videos={videos} api_key={api_key} />}
+          />
+          <Route
+            path="/:videoId"
+            element={<MainVideo videos={videos} api_key={api_key} />}
+          />
+          <Route path="/Upload" element={<UploadVideo />} />
+          <Route path="/Upload/Success" element={<UploadSuccess />} />
+          <Route path="/Video-not-found" element={<PageNotFound />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
