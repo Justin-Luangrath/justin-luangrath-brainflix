@@ -4,11 +4,11 @@
 @use "../../styles/_partials/mixins" as *;
 @use "../../styles/_partials/variables" as *;
 
-.form {
+.comment-form {
   font-family: "Avenir", Times, serif;
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   @include tablet {
     flex-direction: row;
     align-items: center;
@@ -17,10 +17,9 @@
   &-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 1rem 0;
     width: 100%;
-    border-bottom: 1px solid $secondary-color-mercury;
     @include desktop {
       border-bottom: none;
     }
@@ -34,34 +33,34 @@
     color: $primary-color-silver;
   }
   &__img {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 3rem;
+    height: 3rem;
     background-image: url("../../assets/Images/Mohan-muruge.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 50%;
-    margin-top: 1.4rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
     @include tablet {
-      width: 3rem;
-      height: 3rem;
+      margin-right: 2rem;
     }
   }
   &__text-input {
     outline: none;
     font-family: "Avenir", Times, serif;
+    font-size: 1rem;
     height: 5rem;
     width: 100%;
     border-radius: 0.25rem;
     padding: 0.75rem;
-    margin-top: 0.25rem;
     border: 1px solid $secondary-color-mercury;
     margin-bottom: 1rem;
     overflow-y: hidden;
     resize: none;
     background-color: $secondary-color-alabaster;
     @include tablet {
-      height: 40px;
-      padding: auto 1rem;
+      height: 3rem;
+      padding: 1rem;
     }
     &:focus {
       outline: 2px solid $primary-color-blue;
@@ -73,7 +72,7 @@
   &__button {
     text-align: center;
     width: 100%;
-    height: 40px;
+    height: 3rem;
     border-radius: 4px;
     color: $primary-color-white;
     background: transparent url("../../assets/Icons/add_comment.svg") no-repeat
@@ -86,10 +85,14 @@
     }
     @include tablet {
       min-width: 9.375rem;
+      max-width: 11rem;
       padding-left: 2rem;
       padding-right: 2rem;
-      width: 25%;
+      width: 30%;
       margin-left: 2rem;
+    }
+    @include desktop {
+      margin-right: 2rem;
     }
   }
 }

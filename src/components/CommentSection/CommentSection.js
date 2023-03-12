@@ -1,18 +1,29 @@
 import "./CommentSection.scss";
 import CommentForm from "../CommentForm/CommentForm";
 import Comment from "../Comment/Comment";
-import { v4 as uuidv4 } from "uuid";
 
-const CommentSection = (props) => {
-  let { currentVideoId, videoDetails } = props;
-  let currentVideo = videoDetails.find((video) => video.id === currentVideoId);
+const CommentSection = ({
+  currentVideo,
+  deleteCommentHandler,
+  commentSubmitHandler,
+}) => {
   return (
     <div className="comment-section">
       <h4>{currentVideo.comments.length + " Comments"}</h4>
-      <CommentForm />
-      {currentVideo.comments?.map((comment, index) => (
-        <Comment key={uuidv4()} video={comment} />
-      ))}
+      <CommentForm
+        videoId={currentVideo.id}
+        commentSubmitHandler={commentSubmitHandler}
+      />
+      {currentVideo.comments
+        .sort((a, b) => b.timestamp - a.timestamp)
+        .map((comment) => (
+          <Comment
+            key={comment.id}
+            comment={comment}
+            videoId={currentVideo.id}
+            deleteCommentHandler={deleteCommentHandler}
+          />
+        ))}
     </div>
   );
 };

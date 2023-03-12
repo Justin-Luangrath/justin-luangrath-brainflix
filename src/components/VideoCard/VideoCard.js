@@ -1,10 +1,8 @@
 import "./VideoCard.scss";
 
-const VideoCard = (props) => {
-  let { currentVideoId, video, videoSelector } = props;
+const VideoCard = ({ currentVideoId, video }) => {
   return (
     <div
-      onClick={(event) => videoSelector(event, video.id)}
       className={`video-card ${
         video.id === currentVideoId ? "video-card--active" : ""
       }`}
@@ -13,7 +11,7 @@ const VideoCard = (props) => {
         <img
           className="video-card__container-img"
           src={video.image}
-          alt="Video thumbnail"
+          alt={`${video.title} thumbnail`}
         />
       </div>
       <div className="video-card__content-container">

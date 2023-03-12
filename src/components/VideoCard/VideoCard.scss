@@ -10,39 +10,34 @@
   margin-bottom: 1rem;
   cursor: pointer;
   @include tablet {
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
   }
   &--active {
     display: none;
   }
   &__container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
+    width: 9rem;
+    height: 5rem;
     overflow: hidden;
-    min-width: 7rem;
-    height: 4rem;
     background-color: $secondary-color-mercury;
     border-radius: 10px;
     &-img {
-      min-height: 100%;
-      min-width: 100%;
+      height: inherit;
+      width: inherit;
       object-fit: cover;
-      border-radius: inherit;
     }
   }
   &__content-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 13.1875rem;
+    width: 13.25rem;
     margin-left: 1rem;
     color: $primary-color-black;
     padding: 0.1rem 0;
     &-title {
-      font-weight: 700;
+      font-weight: 600;
+      line-height: 1.4rem;
     }
-    // &-channel {
-    // }
   }
 }

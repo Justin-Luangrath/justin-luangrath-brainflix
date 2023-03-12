@@ -1,13 +1,10 @@
 import "./VideoPlayer.scss";
 
-const VideoPlayer = (props) => {
-  let { currentVideoId, videoList } = props;
-  let video = videoList.find((video) => video.id === currentVideoId);
+const VideoPlayer = ({ currentVideo }) => {
   return (
     <div className="player__container">
-      <video className="player" controls poster={video.image}></video>
+      <video className="player" controls poster={currentVideo.image}></video>
     </div>
   );
 };
-
 export default VideoPlayer;

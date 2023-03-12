@@ -7,17 +7,23 @@
 .video-list {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0 1rem;
   @include tablet {
-    padding: 1rem 2rem;
+    padding: 0 2rem;
   }
   &__title {
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 400;
     color: $primary-color-silver;
-    margin-bottom: 1rem;
+    margin: 0.5rem 0 1rem 0;
     @include tablet {
-      margin-bottom: 2rem;
+      margin: 1rem 0 1.5rem 0;
     }
+    @include desktop {
+      margin: 2.5rem 0 1.5rem 0;
+    }
+  }
+  &__link {
+    text-decoration: none;
   }
 }

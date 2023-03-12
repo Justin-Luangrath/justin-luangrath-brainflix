@@ -4,44 +4,47 @@
 @use "../../styles/_partials/variables" as *;
 
 .comment {
+  color: $primary-color-black;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 1rem 0;
   border-collapse: collapse;
-  border-bottom: 1px solid $secondary-color-mercury;
-  border-top: 1px solid $secondary-color-mercury;
+  border-top: 2px solid $secondary-color-mercury;
+  &:last-child {
+    border-bottom: 2px solid $secondary-color-mercury;
+  }
   @include desktop {
-    padding: 2rem 0;
+    padding: 2rem 2rem 1rem 0;
     border-bottom: none;
   }
   &__img {
-    height: 2.25rem;
-    width: 2.25rem;
+    width: 3rem;
+    height: 3rem;
     background-color: $secondary-color-mercury;
     border-radius: 50%;
     border-style: none;
     z-index: 2;
-    @include tablet {
-      width: 3rem;
-      height: 3rem;
-    }
     &-container {
-      width: 2.25rem;
+      width: 3rem;
+      margin-right: 1rem;
       @include tablet {
-        width: 3rem;
+        margin-right: 2rem;
       }
     }
   }
   &__content {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
+    &-text {
+      line-height: 1.35rem;
+    }
   }
   &__header {
     &-container {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.75rem;
     }
     &-text--time {
       color: $secondary-color-mercury;
@@ -54,6 +57,36 @@
     }
     @include desktop {
       width: 35rem;
+    }
+  }
+  &__interaction {
+    &-container {
+      display: flex;
+      align-self: flex-end;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &-text {
+      color: $secondary-color-mercury;
+      font-weight: bold;
+      margin-right: 0.5rem;
+      font-size: 1rem;
+    }
+    &-button {
+      &--delete {
+        background-color: $primary-color-blue;
+        color: $primary-color-white;
+        border-style: none;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 0.25rem;
+        transition: ease 0.25s;
+        margin: 0 0.25rem;
+        cursor: pointer;
+        &:hover {
+          background-color: $secondary-color-dark-blue;
+        }
+      }
     }
   }
 }

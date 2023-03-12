@@ -1,26 +1,41 @@
+import { useState } from "react";
 import "./CommentForm.scss";
 
-const CommentForm = () => {
+const CommentForm = ({ videoId, commentSubmitHandler }) => {
+  const [commentText, setCommentText] = useState("");
+  const userName = "Mohan Muruge";
+  const commentChangeHandler = (event) => {
+    setCommentText(event.target.value);
+  };
+
   return (
     <>
-      <div className="form-container">
-        <div className="form__img-container">
-          <div className="form__img"></div>
+      <div className="comment-form-container">
+        <div className="comment-form__img-container">
+          <div className="comment-form__img"></div>
         </div>
-        <form className="form">
-          <div className="form__search-container">
-            <label htmlFor="#comment-field" className="form__sub-title">
+        <form
+          className="comment-form"
+          onSubmit={(event) => {
+            commentSubmitHandler(event, videoId, userName, commentText);
+            setCommentText("");
+          }}
+        >
+          <div className="comment-form__search-container">
+            <label htmlFor="#comment-field" className="comment-form__sub-title">
               JOIN THE CONVERSATION
             </label>
             <textarea
-              id="comment-field"
-              type=""
-              className="form__text-input form__text-input--comment"
               name="comment"
+              onChange={commentChangeHandler}
+              value={commentText}
+              className="comment-form__text-input comment-form__text-input--comment"
               placeholder="Add a new comment"
-            ></textarea>
+            />
           </div>
-          <button className="form__button">COMMENT</button>
+          <button type="submit" className="comment-form__button">
+            COMMENT
+          </button>
         </form>
       </div>
     </>
