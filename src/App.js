@@ -9,18 +9,19 @@ import UploadSuccess from "./pages/UploadSuccess/UploadSuccess";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 function App() {
-  const api_key = "6e3d80c0-6268-484d-822e-eb7e919f271b";
   const [videos, setVideos] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [uploadComplete, setUploadComplete] = useState(true);
+  const trackUpload = () => {
+    setUploadComplete(!uploadComplete);
+  };
 
   useEffect(() => {
-    axios
-      .get(`https://project-2-api.herokuapp.com/videos?api_key=${api_key}`)
-      .then((response) => {
-        setVideos(response.data);
-        setLoading(false);
-      });
-  }, []);
+    axios.get("http://localhost:8080/videos").then((response) => {
+      setVideos(response.data);
+      setLoading(false);
+    });
+  }, [uploadComplete]);
 
   if (isLoading) {
     return <div></div>;
@@ -31,16 +32,13 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route
-            path="/"
-            element={<MainVideo videos={videos} api_key={api_key} />}
-          />
-          <Route
-            path="/:videoId"
-            element={<MainVideo videos={videos} api_key={api_key} />}
-          />
+          <Route path="/" element={<MainVideo videos={videos} />} />
+          <Route path="/:videoId" element={<MainVideo videos={videos} />} />
           <Route path="/Upload" element={<UploadVideo />} />
-          <Route path="/Upload/Success" element={<UploadSuccess />} />
+          <Route
+            path="/Upload/Success"
+            element={<UploadSuccess trackUpload={trackUpload} />}
+          />
           <Route path="/Video-not-found" element={<PageNotFound />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
