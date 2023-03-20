@@ -1,8 +1,13 @@
 import "./VideoData.scss";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
 
 const VideoData = ({ currentVideo }) => {
+  // Create state hold current video like data
+  const [videoLikes, setVideoLikes] = useState(currentVideo.likes);
+  // Function to format timestamp to readable date
   const formatDate = (timeStamp) => {
     let postDate = new Date(timeStamp);
     let day = String(postDate.getDate()).padStart(2, "0");
@@ -11,6 +16,23 @@ const VideoData = ({ currentVideo }) => {
     postDate = day + "/" + month + "/" + year;
     return postDate;
   };
+  //useEffect to update the video likes on page load
+  useEffect(() => {
+    setVideoLikes(currentVideo.likes);
+  }, [currentVideo]);
+  //Function to handle video likes
+  const likeHandler = () => {
+    axios
+      .put(`http://localhost:8080/videos/${currentVideo.id}`)
+      .then((response) => {
+        console.log(response.data.likes);
+        setVideoLikes(response.data.likes);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="video-data">
       <h1 className="video-data__title">{currentVideo.title}</h1>
@@ -38,11 +60,12 @@ const VideoData = ({ currentVideo }) => {
           </div>
           <div className="video-data-info__container">
             <img
-              className="video-data-info__icon"
+              onClick={likeHandler}
+              className="video-data-info__icon video-data-info__icon--interactive"
               src={likesIcon}
               alt="likes icon"
             />
-            <p className="video-data-info__text">{currentVideo.likes}</p>
+            <p className="video-data-info__text">{videoLikes}</p>
           </div>
         </div>
       </div>

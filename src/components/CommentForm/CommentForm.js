@@ -3,7 +3,7 @@ import "./CommentForm.scss";
 
 const CommentForm = ({ videoId, commentSubmitHandler }) => {
   const [commentText, setCommentText] = useState("");
-  const userName = "Mohan Muruge";
+  const userName = "Max Wanless";
   const commentChangeHandler = (event) => {
     setCommentText(event.target.value);
   };

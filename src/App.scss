@@ -49,4 +49,17 @@ body {
       height: 100%;
     }
   }
+
+  @media only screen and (max-width: 320px) {
+    flex-direction: column;
+    width: 100%;
+    &__video-data {
+      width: 100%;
+      border-right: none;
+    }
+    &__video-list {
+      width: 100%;
+      height: auto;
+    }
+  }
 }

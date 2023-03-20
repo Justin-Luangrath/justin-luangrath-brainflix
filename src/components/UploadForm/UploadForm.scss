@@ -134,6 +134,11 @@
       max-width: 1280px;
     }
   }
+  &__upload-file {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    color: $secondary-color-mercury;
+  }
   &__cancel {
     font-size: 0.9rem;
     text-decoration: none;

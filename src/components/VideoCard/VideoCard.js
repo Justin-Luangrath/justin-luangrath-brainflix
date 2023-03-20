@@ -11,7 +11,7 @@ const VideoCard = ({ currentVideoId, video }) => {
         <img
           className="video-card__container-img"
           src={video.image}
-          alt={`${video.title} thumbnail`}
+          alt="Video thumbnail"
         />
       </div>
       <div className="video-card__content-container">
