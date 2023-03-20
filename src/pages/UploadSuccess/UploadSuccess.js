@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import "./UploadSuccess.scss";
 
-function UploadSuccess() {
+function UploadSuccess({ trackUpload }) {
   const [uploadComplete, setUploadComplete] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setUploadComplete(true);
+      trackUpload();
     }, 2000);
   }, []);
 
