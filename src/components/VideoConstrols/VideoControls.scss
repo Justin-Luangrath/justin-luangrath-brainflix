@@ -1,0 +1,59 @@
+@use "../../styles/_partials/global" as *;
+@use "../../styles/_partials/colors" as *;
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/mixins" as *;
+@use "../../styles/_partials/variables" as *;
+
+.controls {
+  position: absolute;
+  margin-top: 25rem;
+  z-index: 999;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: calc($tablet-player-height * 1.77);
+}
+
+.play-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($secondary-color-dark-black, 0.5);
+  height: 2rem;
+  width: 2.5rem;
+  border-radius: 0.25rem;
+}
+
+.scrubber {
+  width: 70%;
+  height: 0.45rem;
+  background-color: $secondary-color-dark-black;
+  color: $primary-color-blue;
+  &-progress {
+  }
+  &-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba($secondary-color-dark-black, 0.5);
+    height: 2rem;
+    border-radius: 0.25rem;
+    width: 75%;
+  }
+  &__text {
+    color: $primary-color-white;
+  }
+}
+
+.aux-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba($secondary-color-dark-black, 0.5);
+  height: 2rem;
+  width: 5rem;
+  border-radius: 0.25rem;
+}
